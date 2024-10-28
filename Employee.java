@@ -4,6 +4,7 @@ public abstract class Employee {
     private final int employeeNumber;
     private String firstName;
     private String lastName;
+    public String payType;
 
     /**
      * Constructs an Employee with a first name and last name.
@@ -19,6 +20,10 @@ public abstract class Employee {
 
     public int getEmployeeNumber() {
         return employeeNumber;
+    }
+
+    public String getPayType() {
+        return payType;
     }
 
     public String getLastName() {
@@ -55,6 +60,7 @@ public abstract class Employee {
      * @return The paycheck amount.
      */
     public abstract float getPaycheck();
+
 }
 
 /**
@@ -75,6 +81,7 @@ class SalariedEmployee extends Employee {
     public SalariedEmployee(String firstName, String lastName, float salary) {
         super(firstName, lastName);
         this.salary = salary;
+        this.payType = "salary";
     }
 
     public float getSalary() {
@@ -127,6 +134,7 @@ class HourlyEmployee extends Employee {
     public HourlyEmployee(String firstName, String lastName, float rate) {
         super(firstName, lastName);
         this.rate = rate;
+        this.payType = "hourly";
     }
 
     public float getRate() {
@@ -188,6 +196,7 @@ class CommissionEmployee extends SalariedEmployee {
     public CommissionEmployee(String firstName, String lastName, float salary, float[][] schedule) {
         super(firstName, lastName, salary);
         this.commissionSchedule = schedule;
+        this.payType = "commission";
     }
 
     public int getUnitsSold() {
